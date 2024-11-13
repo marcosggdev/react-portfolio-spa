@@ -1,0 +1,78 @@
+.described-item {
+    position: relative;
+}
+.described-item .description {
+    position: relative;
+    opacity: 1;
+    top: -20px;
+    left: 100%;
+    height: 100%;
+    width: fit-content;
+    transition: all 0.25s;
+    position: absolute;
+    margin: 0;
+    white-space: nowrap;
+    transform: translateY(-100%);
+    background-color: grey;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+}
+.described-item > img.showing {
+    pointer-events: none;
+}
+.described-item .arrow {
+    opacity: 1;
+    position: absolute;
+    top: 100%;
+    left: 15px;
+    transform: translateY(-1px);
+    width: 0;
+    height: 0;
+    border-left: 15px solid grey;
+    border-top: 0px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+.described-item .description.hidden, .described-item .arrow.hidden {
+    opacity: 0;
+    left:0;
+    top: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: none;
+}
+.described-item .copy-button {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12pt;
+    font-family: 'BebasNeue';
+    position: relative;
+    transition: all 0.25s;
+}
+.described-item .copy-button.copied {
+    background-color: green;
+}
+.described-item .copy-button .tick {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: all 0.25s;
+}
+.described-item .copy-button .tick.hidden {
+    opacity: 0;
+    top: 100%;
+}

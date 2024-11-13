@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ErrorPage from './pages/ErrorPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter 
+      future={{
+        v7_relativeSplatPath: true,
+        v7_startTransition: true,
+      }}>
+      <Navbar />
+      <Routes>
+        <Route path="*" element={<App />} errorElement={<ErrorPage />}></Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

@@ -1,0 +1,37 @@
+[
+    {
+        "route": "/",
+        "name": "Inicio",
+        "id": 1
+    },
+    {
+        "route": "/contact",
+        "name": "Contacto",
+        "id": 2
+    },
+    {
+        "route": "/professional-profile",
+        "name": "Perfil Profesional",
+        "id": 3
+    },
+    {
+        "route": "/skills",
+        "name": "Habilidades",
+        "id": 4
+    },
+    {
+        "route": "/projects",
+        "name": "Proyectos",
+        "id": 5
+    },
+    {
+        "route": "/education",
+        "name": "Educación",
+        "id": 6
+    },
+    {
+        "route": "/europass",
+        "name": "Europass",
+        "id": 7
+    }
+]

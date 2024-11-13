@@ -10,11 +10,13 @@
     background-color: var(--dark-lighter);
     padding: 5px;
 }
-.tech img {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 1 / 1;
-}
 .tech:hover {
     transform: rotateZ(5deg);
+}
+.tech > .image {
+    background-position: 50%;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
 }

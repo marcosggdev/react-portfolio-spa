@@ -1,0 +1,27 @@
+.described-item {
+    position: relative;
+}
+.described-item .description {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: fit-content;
+    transition: all 0.25s;
+    position: absolute;
+    margin: 0;
+    white-space: nowrap;
+    transform: translateY(-100%);
+    background-color: grey;
+    border-radius: 7px;
+    padding: 5px;
+}
+.described-item .description.hidden {
+    opacity: 0;
+    left:0;
+    top: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: none;
+}
