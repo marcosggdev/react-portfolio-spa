@@ -11,6 +11,14 @@
     background-attachment: fixed;
     background-size: cover;
 }
+.nav .logo {
+    animation-name: slide-down;
+    animation-duration: 0.5s;
+}
+.nav > ul {
+    animation-name: slide-down;
+    animation-duration: 1s;
+}
 .nav > .logo {
     height: 100%;
     aspect-ratio: 1 / 1;
@@ -19,6 +27,7 @@
     justify-content: center;
     flex-direction: row;
     background-color: var(--primary);
+    user-select: none;
 }
 .nav ul {
     display: flex;

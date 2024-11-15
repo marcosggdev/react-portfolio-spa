@@ -3,40 +3,56 @@ require('../assets/css/DescribedItemCopyable.css');
 
 export default function DescribedItem({ src, sizeClass, description }) {
 
-    const [hidden, setHidden] = useState(true);
     const [copied, setCopied] = useState(false);
-    const descriptionRef = useRef(null);
+    const [unfolded, setUnfolded] = useState(false);
+
     const imgRef = useRef(null);
+    const itemRef = useRef(null);
+    const buttonRef = useRef(null);
 
     return (
-        <div className="described-item">
-            <img 
-                className={sizeClass + ((!hidden) ? ' showing' : '')} 
-                ref={imgRef} 
-                onClick={(e) => {
-                //use old value since it is not updated instantly. Hidden -> later visible. !hidden -> later hidden
-                if (hidden) {
-                    descriptionRef.current.focus();
+        <div 
+            className={'described-item' + ((unfolded) ? ' unfolded' : '')}
+            onClick={(e) => {
+                //click on the component: can be over img or over description
+
+                //if it wasnt unfolded
+                if (!unfolded) {
+                    //unfold it and focus it
+                    itemRef.current.focus();
+                    setUnfolded(true);
+                } else {
+                    //else if it was unfolded
+
+                    //if click on img, fold it, else do nothing
+                    if (e.target === imgRef.current) {
+                        setUnfolded(false);
+                    }
                 }
-                setHidden(!hidden);
-                }} 
-                src={src} alt='Icon'></img>
-            <div 
-                className={'description' + ((hidden) ? ' hidden' : '')}
-                ref={descriptionRef}
-                onBlur={(e) => {
-                    setHidden(true);
-                }}
+            }}
+            onBlur={(e) => {
+                if (e.relatedTarget !== buttonRef.current && e.relatedTarget !== itemRef.current) {
+                    setUnfolded(false);
+                    setCopied(false);
+                }
+            }}
+            tabIndex={0}
+            ref={itemRef}
+        >
+            <img
+                className={sizeClass}
+                src={src} alt='Icon'
+                ref={imgRef}
+            ></img>
+            <div
+                className='description'
             >{description}
                 <button
                     className={'copy-button' + ((copied) ? ' copied' : '')}
+                    ref={buttonRef}
                     onClick={() => {
                         navigator.clipboard.writeText(description);
                         setCopied(true);
-                    }}
-                    onBlur={(e) => {
-                        setCopied(false);
-                        setHidden(true);
                     }}
                 >
                     {(copied) ? 'Copied' : 'Copy'}
@@ -45,7 +61,7 @@ export default function DescribedItem({ src, sizeClass, description }) {
                         src={require('../assets/img/tick-gif.gif')}
                         alt='Tick symbol that indicates that the text has been copied to the clipboard'></img>
                 </button>
-                <div className={'arrow' + ((hidden) ? ' hidden' : '')}></div>
+                <div className='arrow'></div>
             </div>
         </div>
     );
